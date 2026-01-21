@@ -54,18 +54,14 @@ spec:
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- with .Values.volumeMounts }}
           volumeMounts:
             - name: app-config
               mountPath: /etc/app/config
               readOnly: true
-          {{- end }}
-      {{- with .Values.volumes }}
       volumes:
          - name: app-config
-           ConfigMap: 
-              name: {{ .Release.Name}}-config
-      {{- end }}
+           configMap: 
+              name: {{ .Release.Name }}-config
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
