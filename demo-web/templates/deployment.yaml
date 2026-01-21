@@ -10,7 +10,8 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      app: demo-web
+      app.kubernetes.io/name: {{ include "demo-web.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +19,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        app: demo-web
+        {{- include "demo-web.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
