@@ -35,7 +35,7 @@ spec:
             - weight: 100
               podAffinityTerm:
                 topologyKey: kubernetes.io/hostname
-                labelSeletor:
+                labelSelector:
                   matchLabels:
                     app.kubernetes.io/name: {{ include "demo-web.name" . }}
       {{- with .Values.imagePullSecrets }}
