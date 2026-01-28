@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "demo-web.labels" . | nindent 4 }}
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "demo-web.name" . }}
