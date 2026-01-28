@@ -1,0 +1,10 @@
+piVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "demo-web.fullname" . }}
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "demo-web.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
