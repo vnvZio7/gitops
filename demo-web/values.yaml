@@ -69,10 +69,12 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: demo-web.demo.svc.cluster.local
+    - host: demo-web.local
       paths:
         - path: /
           pathType: Prefix
+          service:
+            port: 80
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
